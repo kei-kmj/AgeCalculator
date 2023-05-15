@@ -1,4 +1,4 @@
-require "./input_guide"
+require "./lib/input_guide"
 
 class MonthReceiver
   def initialize(date_type)

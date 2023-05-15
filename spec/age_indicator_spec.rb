@@ -1,4 +1,4 @@
-require_relative '../age_indicator'
+require_relative '../lib/age_indicator'
 
 describe 'AgeIndicator' do
   it '誕生日を指定日にすると”生後 0ヶ月"と表示される' do

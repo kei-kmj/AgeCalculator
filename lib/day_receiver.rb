@@ -1,4 +1,4 @@
-require "./input_guide"
+require "./lib/input_guide"
 
 class DayReceiver
   def initialize(date_type)

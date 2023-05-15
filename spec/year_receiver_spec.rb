@@ -1,4 +1,4 @@
-require_relative '../year_receiver'
+require_relative '../lib/year_receiver'
 
 describe 'Year' do
     context '正しい年が入力された場合' do

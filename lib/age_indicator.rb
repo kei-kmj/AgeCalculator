@@ -1,4 +1,4 @@
-require './date_sanitizer'
+require './lib/date_sanitizer'
 
 class AgeIndicator
   def initialize

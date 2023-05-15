@@ -1,6 +1,6 @@
-require "./year_receiver"
-require "./month_receiver"
-require "./day_receiver"
+require "./lib/year_receiver"
+require "./lib/month_receiver"
+require "./lib/day_receiver"
 
 class DateSanitizer
   def initialize(date_type)
