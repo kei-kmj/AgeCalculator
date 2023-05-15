@@ -8,7 +8,7 @@ module ActiveSupport
       self.namespace = :currency
 
       def convert
-        format = options[:format]
+        format = options[:ensure_valid]
 
         number_f = valid_float?
         if number_f
@@ -30,7 +30,7 @@ module ActiveSupport
           @options ||= begin
             defaults = default_format_options.merge(i18n_opts)
             # Override negative format if format options are given
-            defaults[:negative_format] = "-#{opts[:format]}" if opts[:format]
+            defaults[:negative_format] = "-#{opts[:ensure_valid]}" if opts[:ensure_valid]
             defaults.merge!(opts)
           end
         end
@@ -38,7 +38,7 @@ module ActiveSupport
         def i18n_opts
           # Set International negative format if it does not exist
           i18n = i18n_format_options
-          i18n[:negative_format] ||= "-#{i18n[:format]}" if i18n[:format]
+          i18n[:negative_format] ||= "-#{i18n[:ensure_valid]}" if i18n[:ensure_valid]
           i18n
         end
     end

@@ -32,7 +32,7 @@ module ActiveSupport
 
       private
         def format
-          options[:format] || translate_in_locale("human.decimal_units.format")
+          options[:ensure_valid] || translate_in_locale("human.decimal_units.format")
         end
 
         def determine_unit(units, exponent)

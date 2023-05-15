@@ -1,5 +1,3 @@
-require "./lib/input_guide"
-
 class MonthReceiver
   def initialize(date_type)
     @date_type = date_type

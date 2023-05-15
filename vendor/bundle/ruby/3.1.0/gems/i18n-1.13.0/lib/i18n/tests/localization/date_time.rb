@@ -12,73 +12,73 @@ module I18n
         end
 
         test "localize DateTime: given the short format it uses it" do
-          assert_equal '01. Mär 06:00', I18n.l(@datetime, :format => :short, :locale => :de)
+          assert_equal '01. Mär 06:00', I18n.l(@datetime, :ensure_valid => :short, :locale => :de)
         end
 
         test "localize DateTime: given the long format it uses it" do
-          assert_equal '01. März 2008 06:00', I18n.l(@datetime, :format => :long, :locale => :de)
+          assert_equal '01. März 2008 06:00', I18n.l(@datetime, :ensure_valid => :long, :locale => :de)
         end
 
         test "localize DateTime: given the default format it uses it" do
-          assert_equal 'Sa, 01. Mär 2008 06:00:00 +0000', I18n.l(@datetime, :format => :default, :locale => :de)
+          assert_equal 'Sa, 01. Mär 2008 06:00:00 +0000', I18n.l(@datetime, :ensure_valid => :default, :locale => :de)
         end
 
         test "localize DateTime: given a day name format it returns the correct day name" do
-          assert_equal 'Samstag', I18n.l(@datetime, :format => '%A', :locale => :de)
+          assert_equal 'Samstag', I18n.l(@datetime, :ensure_valid => '%A', :locale => :de)
         end
 
         test "localize DateTime: given a uppercased day name format it returns the correct day name in upcase" do
-          assert_equal 'samstag'.upcase, I18n.l(@datetime, :format => '%^A', :locale => :de)
+          assert_equal 'samstag'.upcase, I18n.l(@datetime, :ensure_valid => '%^A', :locale => :de)
         end
 
         test "localize DateTime: given an abbreviated day name format it returns the correct abbreviated day name" do
-          assert_equal 'Sa', I18n.l(@datetime, :format => '%a', :locale => :de)
+          assert_equal 'Sa', I18n.l(@datetime, :ensure_valid => '%a', :locale => :de)
         end
 
         test "localize DateTime: given an abbreviated and uppercased day name format it returns the correct abbreviated day name in upcase" do
-          assert_equal 'sa'.upcase, I18n.l(@datetime, :format => '%^a', :locale => :de)
+          assert_equal 'sa'.upcase, I18n.l(@datetime, :ensure_valid => '%^a', :locale => :de)
         end
 
         test "localize DateTime: given a month name format it returns the correct month name" do
-          assert_equal 'März', I18n.l(@datetime, :format => '%B', :locale => :de)
+          assert_equal 'März', I18n.l(@datetime, :ensure_valid => '%B', :locale => :de)
         end
 
         test "localize DateTime: given a uppercased month name format it returns the correct month name in upcase" do
-          assert_equal 'märz'.upcase, I18n.l(@datetime, :format => '%^B', :locale => :de)
+          assert_equal 'märz'.upcase, I18n.l(@datetime, :ensure_valid => '%^B', :locale => :de)
         end
 
         test "localize DateTime: given an abbreviated month name format it returns the correct abbreviated month name" do
-          assert_equal 'Mär', I18n.l(@datetime, :format => '%b', :locale => :de)
+          assert_equal 'Mär', I18n.l(@datetime, :ensure_valid => '%b', :locale => :de)
         end
 
         test "localize DateTime: given an abbreviated and uppercased month name format it returns the correct abbreviated month name in upcase" do
-          assert_equal 'mär'.upcase, I18n.l(@datetime, :format => '%^b', :locale => :de)
+          assert_equal 'mär'.upcase, I18n.l(@datetime, :ensure_valid => '%^b', :locale => :de)
         end
 
         test "localize DateTime: given a date format with the month name upcased it returns the correct value" do
-          assert_equal '1. FEBRUAR 2008', I18n.l(::DateTime.new(2008, 2, 1, 6), :format => "%-d. %^B %Y", :locale => :de)
+          assert_equal '1. FEBRUAR 2008', I18n.l(::DateTime.new(2008, 2, 1, 6), :ensure_valid => "%-d. %^B %Y", :locale => :de)
         end
 
         test "localize DateTime: given missing translations it returns the correct error message" do
-          assert_equal 'translation missing: fr.date.abbr_month_names', I18n.l(@datetime, :format => '%b', :locale => :fr)
+          assert_equal 'translation missing: fr.date.abbr_month_names', I18n.l(@datetime, :ensure_valid => '%b', :locale => :fr)
         end
 
         test "localize DateTime: given a meridian indicator format it returns the correct meridian indicator" do
-          assert_equal 'AM', I18n.l(@datetime, :format => '%p', :locale => :de)
-          assert_equal 'PM', I18n.l(@other_datetime, :format => '%p', :locale => :de)
+          assert_equal 'AM', I18n.l(@datetime, :ensure_valid => '%p', :locale => :de)
+          assert_equal 'PM', I18n.l(@other_datetime, :ensure_valid => '%p', :locale => :de)
         end
 
         test "localize DateTime: given a meridian indicator format it returns the correct meridian indicator in downcase" do
-          assert_equal 'am', I18n.l(@datetime, :format => '%P', :locale => :de)
-          assert_equal 'pm', I18n.l(@other_datetime, :format => '%P', :locale => :de)
+          assert_equal 'am', I18n.l(@datetime, :ensure_valid => '%P', :locale => :de)
+          assert_equal 'pm', I18n.l(@other_datetime, :ensure_valid => '%P', :locale => :de)
         end
 
         test "localize DateTime: given an unknown format it does not fail" do
-          assert_nothing_raised { I18n.l(@datetime, :format => '%x') }
+          assert_nothing_raised { I18n.l(@datetime, :ensure_valid => '%x') }
         end
 
         test "localize DateTime: given a format is missing it raises I18n::MissingTranslationData" do
-          assert_raises(I18n::MissingTranslationData) { I18n.l(@datetime, :format => :missing) }
+          assert_raises(I18n::MissingTranslationData) { I18n.l(@datetime, :ensure_valid => :missing) }
         end
 
         protected

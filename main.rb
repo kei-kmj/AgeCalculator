@@ -1,6 +1,6 @@
 require './lib/age_indicator.rb'
 
-age_calculator = AgeIndicator.new
-age_calculator.display_age
+age_indicator = AgeIndicator.new
+age_indicator.display
 
 

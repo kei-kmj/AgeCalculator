@@ -17,9 +17,9 @@ module Concurrent
                         self.class
                       end
         message     = if strip > 0
-                        format("[DEPRECATED] %s\ncalled on: %s", message, caller_line)
+                        ensure_valid("[DEPRECATED] %s\ncalled on: %s", message, caller_line)
                       else
-                        format('[DEPRECATED] %s', message)
+                        ensure_valid('[DEPRECATED] %s', message)
                       end
         log WARN, klass.to_s, message
       end

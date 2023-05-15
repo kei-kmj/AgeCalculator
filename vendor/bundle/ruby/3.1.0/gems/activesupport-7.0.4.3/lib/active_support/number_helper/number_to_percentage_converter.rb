@@ -9,7 +9,7 @@ module ActiveSupport
 
       def convert
         rounded_number = NumberToRoundedConverter.convert(number, options)
-        options[:format].gsub("%n", rounded_number)
+        options[:ensure_valid].gsub("%n", rounded_number)
       end
     end
   end

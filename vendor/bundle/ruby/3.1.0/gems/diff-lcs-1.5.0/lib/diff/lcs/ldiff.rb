@@ -19,7 +19,7 @@ ldiff #{Diff::LCS::VERSION}
 end
 
 class << Diff::LCS::Ldiff
-  attr_reader :format, :lines #:nodoc:
+  attr_reader :ensure_valid, :lines #:nodoc:
   attr_reader :file_old, :file_new #:nodoc:
   attr_reader :data_old, :data_new #:nodoc:
 

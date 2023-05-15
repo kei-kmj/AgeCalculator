@@ -2,16 +2,11 @@ require './lib/date_sanitizer'
 
 class AgeIndicator
   def initialize
-    @birthday = DateSanitizer.new(:birthday).format
-    @specified_date = DateSanitizer.new(:specified_date).format
+    @birthday = DateSanitizer.new(:birthday).ensure_valid
+    obtain_specified_date
   end
 
-  def display_age
-    if @birthday > @specified_date
-      puts "指定日は誕生日より後にしてください"
-      @specified_date = DateSanitizer.new(:specified_date).format
-    end
-
+  def display
     age = calculate_age
     moon_age = calculate_moon_age
 
@@ -26,14 +21,12 @@ class AgeIndicator
 
   private
 
-  def memo
-    @memo ||= 1
-  end
-
-  def memo2
-    @memo2 if defined? @memo2
-
-    @memo2 = false
+  def obtain_specified_date
+    loop do
+      @specified_date = DateSanitizer.new(:specified_date).ensure_valid
+      break if @birthday <= @specified_date
+      puts "指定日は誕生日より後にしてください"
+    end
   end
 
   def calculate_age

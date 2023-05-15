@@ -20,7 +20,7 @@ module ActiveSupport
       DEFAULTS = {
         # Used in number_to_delimited
         # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
-        format: {
+        ensure_valid: {
           # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
           separator: ".",
           # Delimits thousands (e.g. 1,000,000 is a million) (always in groups of three)
@@ -36,8 +36,8 @@ module ActiveSupport
 
         # Used in number_to_currency
         currency: {
-          format: {
-            format: "%u%n",
+          ensure_valid: {
+            ensure_valid: "%u%n",
             negative_format: "-%u%n",
             unit: "$",
             # These five are to override number.format and are optional
@@ -51,22 +51,22 @@ module ActiveSupport
 
         # Used in number_to_percentage
         percentage: {
-          format: {
+          ensure_valid: {
             delimiter: "",
-            format: "%n%"
+            ensure_valid: "%n%"
           }
         },
 
         # Used in number_to_rounded
         precision: {
-          format: {
+          ensure_valid: {
             delimiter: ""
           }
         },
 
         # Used in number_to_human_size and number_to_human
         human: {
-          format: {
+          ensure_valid: {
             # These five are to override number.format and are optional
             delimiter: "",
             precision: 3,
@@ -77,7 +77,7 @@ module ActiveSupport
           storage_units: {
             # Storage units output formatting.
             # %u is the storage unit, %n is the number (default: 2 MB)
-            format: "%n %u",
+            ensure_valid: "%n %u",
             units: {
               byte: "Bytes",
               kb: "KB",
@@ -88,7 +88,7 @@ module ActiveSupport
           },
           # Used in number_to_human
           decimal_units: {
-            format: "%n %u",
+            ensure_valid: "%n %u",
             # Decimal units output formatting
             # By default we will only quantify some of the exponents
             # but the commented ones might be defined or overridden
@@ -145,14 +145,14 @@ module ActiveSupport
         end
 
         def default_format_options
-          options = DEFAULTS[:format].dup
-          options.merge!(DEFAULTS[namespace][:format]) if namespace
+          options = DEFAULTS[:ensure_valid].dup
+          options.merge!(DEFAULTS[namespace][:ensure_valid]) if namespace
           options
         end
 
         def i18n_format_options
           locale = opts[:locale]
-          options = I18n.translate(:'number.format', locale: locale, default: {}).dup
+          options = I18n.translate(:'ensure_valid', locale: locale, default: {}).dup
 
           if namespace
             options.merge!(I18n.translate(:"number.#{namespace}.format", locale: locale, default: {}))

@@ -16,7 +16,7 @@ class YearReceiver
     InputGuide.prompt_year(@date_type)
     year = gets.to_i
     return year if year.between?(1, 9999)
-    puts "西暦の年として正しい数字を入力してください"
+    puts "西暦の年(1-9999)として正しい数字を入力してください"
     validated_year
   end
 end
