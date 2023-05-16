@@ -4,3 +4,7 @@ source "https://rubygems.org"
 
 gem "rspec"
 gem 'activesupport'
+
+group :development, :test do
+  gem 'rubocop'
+end

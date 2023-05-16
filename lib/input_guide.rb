@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InputGuide
   def self.prompt_year(date_type)
     puts "#{date_type == :birthday ? '誕生' : '指定'}年を西暦で入力してください"

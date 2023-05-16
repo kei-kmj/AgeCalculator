@@ -1,0 +1,16 @@
+current directory: /home/kei-kmj/dev/projects/calc/calc_age/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+/home/kei-kmj/.rbenv/versions/3.1.1/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/kei-kmj/dev/projects/calc/calc_age/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230516-5284-gc5yco sitelibdir\=./.gem.20230516-5284-gc5yco clean
+
+current directory: /home/kei-kmj/dev/projects/calc/calc_age/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230516-5284-gc5yco sitelibdir\=./.gem.20230516-5284-gc5yco
+make: Nothing to be done for 'all'.
+
+current directory: /home/kei-kmj/dev/projects/calc/calc_age/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230516-5284-gc5yco sitelibdir\=./.gem.20230516-5284-gc5yco install
+
+current directory: /home/kei-kmj/dev/projects/calc/calc_age/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230516-5284-gc5yco sitelibdir\=./.gem.20230516-5284-gc5yco clean

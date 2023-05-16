@@ -1,4 +1,6 @@
-require "./lib/input_guide"
+# frozen_string_literal: true
+
+require './lib/input_guide'
 
 class YearReceiver
   def initialize(date_type)
@@ -16,7 +18,8 @@ class YearReceiver
     InputGuide.prompt_year(@date_type)
     year = gets.to_i
     return year if year.between?(1, 9999)
-    puts "西暦の年(1-9999)として正しい数字を入力してください"
+
+    puts '西暦の年(1-9999)として正しい数字を入力してください'
     validated_year
   end
 end
