@@ -1,7 +1,6 @@
-require "./age_indicator"
+# frozen_string_literal: true
 
-age_calculator = AgeIndicator.new
-age_calculator.calculate_age
-age_calculator.calculate_moon_age
+require './lib/age_indicator'
 
-
+age_indicator = AgeIndicator.new
+age_indicator.display
