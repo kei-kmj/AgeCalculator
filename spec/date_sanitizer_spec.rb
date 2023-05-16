@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/date_sanitizer'
 
 describe 'DateSanitizer' do
@@ -10,52 +12,52 @@ describe 'DateSanitizer' do
   end
 
   describe '#formatted' do
-    context "西暦1桁" do
+    context '1桁の西暦が入力された場合' do
       let(:year) { 1 }
       let(:month) { 2 }
       let(:day) { 1 }
 
-      it "5桁の整数を返す" do
-        expect(date_sanitizer.send(:formatted)).to eq 10201
+      it '5桁の整数を返す' do
+        expect(date_sanitizer.send(:formatted)).to eq 10_201
       end
     end
-    context "西暦4桁" do
+    context '4桁の西暦が入力された場合' do
       let(:year) { 9999 }
       let(:month) { 12 }
       let(:day) { 31 }
 
-      it "8桁の整数を返す" do
-        expect(date_sanitizer.send(:formatted)).to eq 99991231
+      it '8桁の整数を返す' do
+        expect(date_sanitizer.send(:formatted)).to eq 99_991_231
       end
     end
   end
-  describe "#valid?" do
-    context "2020年はうるう年" do
+  describe '#valid?' do
+    context 'うるう日が入力された場合' do
       let(:year) { 2020 }
       let(:month) { 2 }
       let(:day) { 29 }
 
-      it "trueが返る" do
+      it 'trueを返す' do
         expect(date_sanitizer.send(:valid?)).to be true
       end
     end
 
-    context "2019年はうるう年ではない" do
+    context 'うるう年ではない年のうるう日が入力された場合' do
       let(:year) { 2019 }
       let(:month) { 2 }
       let(:day) { 29 }
 
-      it "falseが返る" do
+      it 'falseを返す' do
         expect(date_sanitizer.send(:valid?)).to be false
       end
     end
 
-    context "2023/4/31は有効な日付ではない" do
+    context '存在しない日付が入力された場合' do
       let(:year) { 2023 }
       let(:month) { 4 }
       let(:day) { 31 }
 
-      it "falseが返る" do
+      it 'falseを返す' do
         expect(date_sanitizer.send(:valid?)).to be false
       end
     end

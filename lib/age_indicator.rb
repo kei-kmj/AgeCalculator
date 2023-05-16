@@ -6,30 +6,28 @@ class AgeIndicator
   def initialize
     @birthday = DateSanitizer.new(:birthday).ensure_valid
     obtain_specified_date
+    @age = calculate_age
+    @moon_age = calculate_moon_age
   end
 
   def display
-    age = calculate_age
-    moon_age = calculate_moon_age
-
-    if age < 1
-      puts "生後 #{moon_age}ヶ月"
-    elsif age < 2
-      puts "#{age}歳 #{moon_age}ヶ月"
+    if @age < 1
+      puts "生後 #{@moon_age}ヶ月"
+    elsif @age < 2
+      puts "#{@age}歳 #{@moon_age}ヶ月"
     else
-      puts "#{age}歳"
+      puts "#{@age}歳"
     end
   end
 
   private
 
   def obtain_specified_date
-    loop do
-      @specified_date = DateSanitizer.new(:specified_date).ensure_valid
-      break if @birthday <= @specified_date
+    @specified_date = DateSanitizer.new(:specified_date).ensure_valid
+    return unless @birthday > @specified_date
 
-      puts '指定日は誕生日より後にしてください'
-    end
+    puts '指定日は誕生日より後にしてください'
+    obtain_specified_date
   end
 
   def calculate_age

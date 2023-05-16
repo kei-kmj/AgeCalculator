@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative '../lib/day_receiver'
 
-describe 'Day' do
+describe 'DayReceiver' do
   it '1桁の数字を受け取ることが出来る' do
-    allow_any_instance_of(Object).to receive(:gets).and_return("1")
+    allow_any_instance_of(Object).to receive(:gets).and_return('1')
 
     day = DayReceiver.new(:specified_date)
 
@@ -10,7 +12,7 @@ describe 'Day' do
   end
 
   it '31以下の数字を受け取ることが出来る' do
-    allow_any_instance_of(Object).to receive(:gets).and_return("31")
+    allow_any_instance_of(Object).to receive(:gets).and_return('31')
 
     day = DayReceiver.new(:specified_date)
 
@@ -18,7 +20,7 @@ describe 'Day' do
   end
 
   it '0が入力されたら再入力を求め、有効な日を返す' do
-    allow_any_instance_of(Object).to receive(:gets).and_return("0", "1")
+    allow_any_instance_of(Object).to receive(:gets).and_return('0', '1')
 
     day = DayReceiver.new(:birthday)
 
@@ -27,7 +29,7 @@ describe 'Day' do
   end
 
   it '32以上が入力されたら再入力を求め、有効な日を返す' do
-    allow_any_instance_of(Object).to receive(:gets).and_return("32", "31")
+    allow_any_instance_of(Object).to receive(:gets).and_return('32', '31')
 
     day = DayReceiver.new(:birthday)
 
@@ -36,7 +38,7 @@ describe 'Day' do
   end
 
   it '文字列が入力されたら再入力を求め、有効な日を返す' do
-    allow_any_instance_of(Object).to receive(:gets).and_return("ab", "10")
+    allow_any_instance_of(Object).to receive(:gets).and_return('ab', '10')
 
     day = DayReceiver.new(:birthday)
 

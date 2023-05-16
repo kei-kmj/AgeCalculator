@@ -7,9 +7,7 @@ require './lib/day_receiver'
 class DateSanitizer
   def initialize(date_type)
     @date_type = date_type
-    @year = YearReceiver.new(date_type).value
-    @month = MonthReceiver.new(date_type).value
-    @day = DayReceiver.new(date_type).value
+    renew
   end
 
   def ensure_valid
